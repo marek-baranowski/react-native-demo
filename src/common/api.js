@@ -1,9 +1,9 @@
-export const submitPost = ({ description, ...rest }) =>
+export const submitPost = ({ description, title }) =>
   fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
     body: JSON.stringify({
-      ...rest,
-      body: description,
+      title: title.trim(),
+      body: description.trim(),
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",

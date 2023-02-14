@@ -55,13 +55,14 @@ function NewPostFrom() {
         control={control}
         rules={{
           required: true,
+          pattern: /[\S\s]+[\S]+/,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <FormControl isRequired isInvalid={!!errors.title}>
             <FormControl.Label>Title</FormControl.Label>
             <Input value={value} onChangeText={onChange} onBlur={onBlur} />
             <FormControl.ErrorMessage>
-              {errors.title?.type === "required" && "Title is required"}
+              {errors.title && "Title is required"}
             </FormControl.ErrorMessage>
           </FormControl>
         )}
@@ -71,6 +72,7 @@ function NewPostFrom() {
         control={control}
         rules={{
           required: true,
+          pattern: /[\S\s]+[\S]+/,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <FormControl isRequired isInvalid={!!errors.description}>
@@ -82,8 +84,7 @@ function NewPostFrom() {
               h={20}
             />
             <FormControl.ErrorMessage>
-              {errors.description?.type === "required" &&
-                "Description is required"}
+              {errors.description && "Description is required"}
             </FormControl.ErrorMessage>
           </FormControl>
         )}
